@@ -1,0 +1,4 @@
+#Sun Oct 09 17:46:01 SGT 2022
+base.0=C\:\\USJR Projects\\SPELEC1B\\spelec1b-login-screen\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
