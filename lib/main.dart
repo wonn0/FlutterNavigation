@@ -10,6 +10,12 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/': (context) => const Scaffold(body: LoginForm()),
+        '/a': (context) => const Scaffold(body: WidgetA()),
+        '/b': (context) => const Scaffold(body: WidgetB()),
+        '/c': (context) => const Scaffold(body: WidgetC()),
+      },
       theme: ThemeData(
         //default colors
         colorScheme: const ColorScheme.light().copyWith(primary: const Color(0xffff7582)),
@@ -29,9 +35,6 @@ class LoginPage extends StatelessWidget {
           )
         ),
       ),
-      home: const Scaffold(
-        body: LoginForm(),
-      )
     );
   }
 }
@@ -87,7 +90,9 @@ class LoginForm extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                   child: ElevatedButton(
-                    onPressed: () => {}, 
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/a');
+                    }, 
                     child: const Text('Login'),
                   ),
                 ),
@@ -99,6 +104,92 @@ class LoginForm extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class WidgetA extends StatelessWidget {
+  const WidgetA({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('Widget A'),
+          const SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/b');
+            }, 
+            child: const Text('Go To B'),
+          ),
+          const SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            }, 
+            child: const Text('Back'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class WidgetB extends StatelessWidget {
+  const WidgetB({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('Widget B'),
+          const SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pushNamed(context, '/c');
+            }, 
+            child: const Text('Go To C'),
+          ),
+          const SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            }, 
+            child: const Text('Back'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class WidgetC extends StatelessWidget {
+  const WidgetC({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text('Widget C'),
+          const SizedBox(height: 20.0),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.pop(context);
+            }, 
+            child: const Text('Back'),
+          ),
+        ],
       ),
     );
   }
